@@ -9,6 +9,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -32,6 +33,8 @@ public class PixelPaint extends Application {
     btSave.setOnMouseClicked(e -> handleLoad());
 
     HBox controls = new HBox();
+    controls.setPadding(new Insets(5, 0, 5, 5));
+    controls.setSpacing(10);
     controls.getChildren().addAll(colorPicker, btSave, btLoad);
 
     BorderPane borderPane = new BorderPane();
