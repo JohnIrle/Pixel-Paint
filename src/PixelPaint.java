@@ -4,6 +4,7 @@
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -20,8 +21,12 @@ public class PixelPaint extends Application {
       }
     }
 
+    ColorPicker colorPicker = new ColorPicker();
+
     BorderPane borderPane = new BorderPane();
+    borderPane.setTop(colorPicker);
     borderPane.setCenter(pane);
+
 
     Scene scene = new Scene(borderPane, 600,600);
     primaryStage.setTitle("Pixel Paint");
