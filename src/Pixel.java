@@ -19,6 +19,7 @@ class Pixel extends Pane {
     this.setOnMouseClicked(e -> handleMouseClick());
   }
 
+
   private void handleMouseClick() {
     Color color = PixelPaint.colorPicker.getValue();
     BackgroundFill backgroundFill = new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY);
