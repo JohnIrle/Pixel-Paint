@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class PixelPaint extends Application {
   private Pixel[][] grid = new Pixel[36][36];
+  static ColorPicker colorPicker = new ColorPicker();
 
   public void start(Stage primaryStage) {
     GridPane pane = new GridPane();
@@ -21,7 +22,6 @@ public class PixelPaint extends Application {
       }
     }
 
-    ColorPicker colorPicker = new ColorPicker();
 
     BorderPane borderPane = new BorderPane();
     borderPane.setTop(colorPicker);
