@@ -16,6 +16,7 @@ class Pixel extends Pane {
   public Pixel() {
     this.setPrefSize(2000, 2000);
     this.setStyle("-fx-border-color: black");
+    this.cellColor = Color.WHITE;
     this.setOnMouseClicked(e -> handleMouseClick());
   }
 
