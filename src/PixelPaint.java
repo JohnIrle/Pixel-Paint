@@ -14,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 
 public class PixelPaint extends Application {
@@ -56,10 +55,18 @@ public class PixelPaint extends Application {
     try {
       File file = new File("file.txt");
       PrintWriter f = new PrintWriter(file);
-      f.println("it worked");
+      for (int i = 0; i < 32; i++) {
+        for (int j = 0; j < 32; j++) {
+          Color current = grid[i][j].getColor();
+          System.out.println(current);
+          f.print("R" + (int)(current.getRed() * 255)
+                  + " G" + (int)(current.getGreen() * 255)
+                  + " B" + (int)(current.getBlue() * 255) + '\n');
+        }
+      }
       f.close();
     } catch (Exception e) {
-
+      e.printStackTrace();
     }
   }
 
