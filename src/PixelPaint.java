@@ -49,7 +49,11 @@ public class PixelPaint extends Application {
   }
 
   private void handleSave() {
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[i].length; j++) {
 
+      }
+    }
   }
 
   private void handleLoad() {
