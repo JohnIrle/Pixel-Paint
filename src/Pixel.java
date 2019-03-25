@@ -19,6 +19,9 @@ class Pixel extends Pane {
     this.setOnMouseClicked(e -> handleMouseClick());
   }
 
+  public Color getColor() {
+    return this.cellColor;
+  }
 
   private void handleMouseClick() {
     Color color = PixelPaint.colorPicker.getValue();
