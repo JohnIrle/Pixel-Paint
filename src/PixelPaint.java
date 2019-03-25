@@ -13,6 +13,10 @@ import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class PixelPaint extends Application {
   private Pixel[][] grid = new Pixel[36][36];
   static ColorPicker colorPicker = new ColorPicker(Color.BLACK);
@@ -30,7 +34,7 @@ public class PixelPaint extends Application {
     Button btLoad = new Button("Load");
 
     btSave.setOnMouseClicked(e -> handleSave());
-    btSave.setOnMouseClicked(e -> handleLoad());
+    btLoad.setOnMouseClicked(e -> handleLoad());
 
     HBox controls = new HBox();
     controls.setPadding(new Insets(5, 0, 5, 5));
@@ -49,10 +53,13 @@ public class PixelPaint extends Application {
   }
 
   private void handleSave() {
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid[i].length; j++) {
+    try {
+      File file = new File("file.txt");
+      PrintWriter f = new PrintWriter(file);
+      f.println("it worked");
+      f.close();
+    } catch (Exception e) {
 
-      }
     }
   }
 
