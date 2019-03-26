@@ -24,6 +24,8 @@ class Pixel extends Pane {
     return this.cellColor;
   }
 
+  public void setColor(Color color) { this.cellColor = color; }
+
   private void handleMouseClick() {
     Color color = PixelPaint.colorPicker.getValue();
     BackgroundFill backgroundFill = new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY);
