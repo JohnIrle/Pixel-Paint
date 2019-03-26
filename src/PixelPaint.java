@@ -59,9 +59,9 @@ public class PixelPaint extends Application {
         for (int j = 0; j < 32; j++) {
           Color current = grid[i][j].getColor();
           System.out.println(current);
-          f.print("R" + (int)(current.getRed() * 255)
-                  + " G" + (int)(current.getGreen() * 255)
-                  + " B" + (int)(current.getBlue() * 255) + '\n');
+          f.print((int)(current.getRed() * 255)
+                  + " " + (int)(current.getGreen() * 255)
+                  + " " + (int)(current.getBlue() * 255) + '\n');
         }
       }
       f.close();
