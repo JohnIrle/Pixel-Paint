@@ -9,6 +9,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.*;
 import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -28,11 +29,51 @@ public class PixelPaint extends Application {
       }
     }
 
+    FileChooser fileChooser = new FileChooser();
+
     Button btSave = new Button("Save");
     Button btLoad = new Button("Load");
 
-    btSave.setOnMouseClicked(e -> handleSave());
-    btLoad.setOnMouseClicked(e -> handleLoad());
+    btSave.setOnMouseClicked(e -> {
+      try {
+        File file = fileChooser.showSaveDialog(primaryStage);
+        PrintWriter f = new PrintWriter(file);
+        for (int i = 0; i < 32; i++) {
+          for (int j = 0; j < 32; j++) {
+            Color current = grid[i][j].getColor();
+            f.print((int) (current.getRed() * 255)
+                    + " " + (int) (current.getGreen() * 255)
+                    + " " + (int) (current.getBlue() * 255) + '\n');
+          }
+        }
+        f.close();
+      } catch (Exception ex) {
+        ex.printStackTrace();
+      }
+
+    });
+    btLoad.setOnMouseClicked(e -> {
+      File file = fileChooser.showOpenDialog(primaryStage);
+      try {
+        Scanner input = new Scanner(file);
+        for (int i = 0; i < 32; i++) {
+          for (int j = 0; j < 32; j++) {
+            int R = input.nextInt();
+            int G = input.nextInt();
+            int B = input.nextInt();
+
+            Color color = Color.rgb(R, G, B);
+
+            BackgroundFill backgroundFill = new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY);
+
+            grid[i][j].setBackground(new Background(backgroundFill));
+            grid[i][j].setColor(color);
+          }
+        }
+      } catch (Exception ex) {
+        ex.printStackTrace();
+      }
+    });
 
     HBox controls = new HBox();
     controls.setPadding(new Insets(5, 0, 5, 5));
@@ -44,51 +85,10 @@ public class PixelPaint extends Application {
     borderPane.setCenter(pane);
 
 
-    Scene scene = new Scene(borderPane, 600,600);
+    Scene scene = new Scene(borderPane, 600, 600);
     primaryStage.setTitle("Pixel Paint");
     primaryStage.setScene(scene);
     primaryStage.show();
-  }
-
-  private void handleSave() {
-    try {
-      File file = new File("file.txt");
-      PrintWriter f = new PrintWriter(file);
-      for (int i = 0; i < 32; i++) {
-        for (int j = 0; j < 32; j++) {
-          Color current = grid[i][j].getColor();
-          f.print((int)(current.getRed() * 255)
-                  + " " + (int)(current.getGreen() * 255)
-                  + " " + (int)(current.getBlue() * 255) + '\n');
-        }
-      }
-      f.close();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  private void handleLoad() {
-    File file = new File("file.txt");
-    try {
-      Scanner input = new Scanner(file);
-      for (int i = 0; i < 32; i++) {
-        for (int j = 0; j < 32; j++) {
-          int R = input.nextInt();
-          int G = input.nextInt();
-          int B = input.nextInt();
-
-          Color color = Color.rgb(R, G, B);
-
-          BackgroundFill backgroundFill = new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY);
-
-          grid[i][j].setBackground(new Background(backgroundFill));
-          grid[i][j].setColor(color);
-        }
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 
   public static void main(String[] args) {
