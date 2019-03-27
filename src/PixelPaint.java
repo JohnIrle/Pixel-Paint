@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.File;
