@@ -22,6 +22,7 @@ public class PixelPaint extends Application {
 
   public void start(Stage primaryStage) {
     GridPane pane = new GridPane();
+    pane.setPadding(new Insets(0, 15, 15, 15 ));
 
     for (int i = 0; i < 32; i++) {
       for (int j = 0; j < 32; j++) {
@@ -30,6 +31,7 @@ public class PixelPaint extends Application {
     }
 
     FileChooser fileChooser = new FileChooser();
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files (.txt)", "*.txt"));
 
     Button btSave = new Button("Save");
     Button btLoad = new Button("Load");
@@ -76,7 +78,7 @@ public class PixelPaint extends Application {
     });
 
     HBox controls = new HBox();
-    controls.setPadding(new Insets(5, 0, 5, 5));
+    controls.setPadding(new Insets(5, 0, 5, 15));
     controls.setSpacing(10);
     controls.getChildren().addAll(colorPicker, btSave, btLoad);
 
