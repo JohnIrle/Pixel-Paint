@@ -21,6 +21,7 @@ public class PixelPaint extends Application {
   static ColorPicker colorPicker = new ColorPicker(Color.BLACK);
 
   public void start(Stage primaryStage) {
+    primaryStage.setResizable(false);
     GridPane pane = new GridPane();
     pane.setPadding(new Insets(0, 15, 15, 15 ));
 
@@ -87,7 +88,7 @@ public class PixelPaint extends Application {
     borderPane.setCenter(pane);
 
 
-    Scene scene = new Scene(borderPane, 600, 600);
+    Scene scene = new Scene(borderPane, 800, 800);
     primaryStage.setTitle("Pixel Paint");
     primaryStage.setScene(scene);
     primaryStage.show();
