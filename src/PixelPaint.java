@@ -25,6 +25,7 @@ public class PixelPaint extends Application {
     GridPane pane = new GridPane();
     pane.setPadding(new Insets(0, 15, 15, 15 ));
 
+    // Initialize grid
     for (int i = 0; i < 32; i++) {
       for (int j = 0; j < 32; j++) {
         pane.add(grid[i][j] = new Pixel(), j, i);
